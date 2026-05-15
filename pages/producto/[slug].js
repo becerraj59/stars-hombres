@@ -350,15 +350,9 @@ export default function ProductPage({ product, related }) {
 }
 
 export async function getStaticPaths() {
-  try {
-    const db = require('../../lib/db')
-    const result = await db.query(`SELECT slug FROM products WHERE active = true`)
-    return {
-      paths: result.rows.map((r) => ({ params: { slug: r.slug } })),
-      fallback: 'blocking',
-    }
-  } catch {
-    return { paths: [], fallback: 'blocking' }
+  return {
+    paths: [],
+    fallback: 'blocking',
   }
 }
 

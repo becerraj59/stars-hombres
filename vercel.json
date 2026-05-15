@@ -1,15 +1,5 @@
 {
   "version": 2,
   "buildCommand": "next build",
-  "devCommand": "next dev",
-  "installCommand": "npm install",
-  "framework": "nextjs",
-  "regions": ["gru1"],
-  "env": {
-    "DATABASE_URL": "@database_url",
-    "MP_ACCESS_TOKEN": "@mp_access_token",
-    "JWT_SECRET": "@jwt_secret",
-    "NEXT_PUBLIC_SITE_URL": "@site_url",
-    "NEXT_PUBLIC_WHATSAPP_NUMBER": "@whatsapp_number"
-  }
+  "framework": "nextjs"
 }
