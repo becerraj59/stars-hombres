@@ -1,1 +1,9 @@
-{"/_app":"pages/_app.js","/_document":"pages/_document.js","/_error":"pages/_error.js","/api/auth/logout":"pages/api/auth/logout.js","/admin":"pages/admin.html","/api/auth/login":"pages/api/auth/login.js","/api/orders":"pages/api/orders.js","/api/products/[slug]":"pages/api/products/[slug].js","/api/orders/create":"pages/api/orders/create.js","/api/products/admin":"pages/api/products/admin.js","/api/products":"pages/api/products.js","/checkout":"pages/checkout.html","/orden/confirmacion":"pages/orden/confirmacion.html","/catalogo":"pages/catalogo.html","/producto/[slug]":"pages/producto/[slug].js","/api/orders/webhook":"pages/api/orders/webhook.js","/":"pages/index.js","/404":"pages/404.html"}
+{
+  "/_app": "pages/_app.js",
+  "/_error": "pages/_error.js",
+  "/_document": "pages/_document.js",
+  "/catalogo": "pages/catalogo.js",
+  "/producto/[slug]": "pages/producto/[slug].js",
+  "/api/orders/create": "pages/api/orders/create.js",
+  "/checkout": "pages/checkout.js"
+}

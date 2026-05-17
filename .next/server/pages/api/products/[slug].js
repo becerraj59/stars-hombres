@@ -1,33 +1,76 @@
-"use strict";(()=>{var e={};e.id=87,e.ids=[87],e.modules={1287:e=>{e.exports=require("next/dist/compiled/next-server/pages-api.runtime.prod.js")},5900:e=>{e.exports=require("pg")},6249:(e,r)=>{Object.defineProperty(r,"l",{enumerable:!0,get:function(){return function e(r,t){return t in r?r[t]:"then"in r&&"function"==typeof r.then?r.then(r=>e(r,t)):"function"==typeof r&&"default"===t?r:void 0}}})},76:(e,r,t)=>{t.r(r),t.d(r,{config:()=>d,default:()=>c,routeModule:()=>l});var o={};t.r(o),t.d(o,{default:()=>p});var n=t(1802),i=t(7153),s=t(6249),a=t(1004),u=t.n(a);async function p(e,r){let{slug:t}=e.query;if("GET"===e.method)try{let e=await u().query(`SELECT 
-          p.*,
-          COALESCE(json_agg(
-            json_build_object(
-              'id', pv.id,
-              'sku', pv.sku,
-              'size', pv.size,
-              'color', pv.color,
-              'color_hex', pv.color_hex,
-              'stock', pv.stock,
-              'price_override', pv.price_override
-            ) ORDER BY pv.size, pv.color
-          ) FILTER (WHERE pv.id IS NOT NULL), '[]') as variants,
-          COALESCE(
-            json_agg(
-              json_build_object(
-                'id', r.id,
-                'customer_name', r.customer_name,
-                'rating', r.rating,
-                'comment', r.comment,
-                'created_at', r.created_at
-              ) ORDER BY r.created_at DESC
-            ) FILTER (WHERE r.id IS NOT NULL AND r.approved = true),
-            '[]'
-          ) as reviews
-        FROM products p
-        LEFT JOIN product_variants pv ON pv.product_id = p.id
-        LEFT JOIN reviews r ON r.product_id = p.id
-        WHERE p.slug = $1 AND p.active = true
-        GROUP BY p.id`,[t]);if(!e.rows[0])return r.status(404).json({error:"Producto no encontrado"});let o=e.rows[0],n=await u().query(`SELECT p.id, p.slug, p.name, p.base_price, p.images, p.category
-         FROM products p
-         WHERE p.category = $1 AND p.slug != $2 AND p.active = true
-         LIMIT 4`,[o.category,t]);r.status(200).json({product:o,related:n.rows})}catch(e){console.error(e),r.status(500).json({error:"Error al obtener producto"})}else r.status(405).end()}let c=(0,s.l)(o,"default"),d=(0,s.l)(o,"config"),l=new n.PagesAPIRouteModule({definition:{kind:i.x.PAGES_API,page:"/api/products/[slug]",pathname:"/api/products/[slug]",bundlePath:"",filename:""},userland:o})},1004:(e,r,t)=>{let{Pool:o}=t(5900),n=new o({connectionString:process.env.DATABASE_URL,ssl:{rejectUnauthorized:!1}});e.exports={query:(e,r)=>n.query(e,r),pool:n}},7153:(e,r)=>{var t;Object.defineProperty(r,"x",{enumerable:!0,get:function(){return t}}),function(e){e.PAGES="PAGES",e.PAGES_API="PAGES_API",e.APP_PAGE="APP_PAGE",e.APP_ROUTE="APP_ROUTE"}(t||(t={}))},1802:(e,r,t)=>{e.exports=t(1287)}};var r=require("../../../webpack-api-runtime.js");r.C(e);var t=r(r.s=76);module.exports=t})();
+"use strict";
+/*
+ * ATTENTION: An "eval-source-map" devtool has been used.
+ * This devtool is neither made for production nor for readable output files.
+ * It uses "eval()" calls to create a separate source file with attached SourceMaps in the browser devtools.
+ * If you are trying to read the output file, select a different devtool (https://webpack.js.org/configuration/devtool/)
+ * or disable the default devtool with "devtool: false".
+ * If you are looking for production-ready output files, see mode: "production" (https://webpack.js.org/configuration/mode/).
+ */
+(() => {
+var exports = {};
+exports.id = "pages/api/products/[slug]";
+exports.ids = ["pages/api/products/[slug]"];
+exports.modules = {
+
+/***/ "next/dist/compiled/next-server/pages-api.runtime.dev.js":
+/*!**************************************************************************!*\
+  !*** external "next/dist/compiled/next-server/pages-api.runtime.dev.js" ***!
+  \**************************************************************************/
+/***/ ((module) => {
+
+module.exports = require("next/dist/compiled/next-server/pages-api.runtime.dev.js");
+
+/***/ }),
+
+/***/ "pg":
+/*!*********************!*\
+  !*** external "pg" ***!
+  \*********************/
+/***/ ((module) => {
+
+module.exports = require("pg");
+
+/***/ }),
+
+/***/ "(api)/./node_modules/next/dist/build/webpack/loaders/next-route-loader/index.js?kind=PAGES_API&page=%2Fapi%2Fproducts%2F%5Bslug%5D&preferredRegion=&absolutePagePath=.%2Fpages%5Capi%5Cproducts%5C%5Bslug%5D.js&middlewareConfigBase64=e30%3D!":
+/*!************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/next/dist/build/webpack/loaders/next-route-loader/index.js?kind=PAGES_API&page=%2Fapi%2Fproducts%2F%5Bslug%5D&preferredRegion=&absolutePagePath=.%2Fpages%5Capi%5Cproducts%5C%5Bslug%5D.js&middlewareConfigBase64=e30%3D! ***!
+  \************************************************************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   config: () => (/* binding */ config),\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__),\n/* harmony export */   routeModule: () => (/* binding */ routeModule)\n/* harmony export */ });\n/* harmony import */ var next_dist_server_future_route_modules_pages_api_module_compiled__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! next/dist/server/future/route-modules/pages-api/module.compiled */ \"(api)/./node_modules/next/dist/server/future/route-modules/pages-api/module.compiled.js\");\n/* harmony import */ var next_dist_server_future_route_modules_pages_api_module_compiled__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(next_dist_server_future_route_modules_pages_api_module_compiled__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var next_dist_server_future_route_kind__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! next/dist/server/future/route-kind */ \"(api)/./node_modules/next/dist/server/future/route-kind.js\");\n/* harmony import */ var next_dist_build_templates_helpers__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! next/dist/build/templates/helpers */ \"(api)/./node_modules/next/dist/build/templates/helpers.js\");\n/* harmony import */ var _pages_api_products_slug_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./pages\\api\\products\\[slug].js */ \"(api)/./pages/api/products/[slug].js\");\n\n\n\n// Import the userland code.\n\n// Re-export the handler (should be the default export).\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ((0,next_dist_build_templates_helpers__WEBPACK_IMPORTED_MODULE_2__.hoist)(_pages_api_products_slug_js__WEBPACK_IMPORTED_MODULE_3__, \"default\"));\n// Re-export config.\nconst config = (0,next_dist_build_templates_helpers__WEBPACK_IMPORTED_MODULE_2__.hoist)(_pages_api_products_slug_js__WEBPACK_IMPORTED_MODULE_3__, \"config\");\n// Create and export the route module that will be consumed.\nconst routeModule = new next_dist_server_future_route_modules_pages_api_module_compiled__WEBPACK_IMPORTED_MODULE_0__.PagesAPIRouteModule({\n    definition: {\n        kind: next_dist_server_future_route_kind__WEBPACK_IMPORTED_MODULE_1__.RouteKind.PAGES_API,\n        page: \"/api/products/[slug]\",\n        pathname: \"/api/products/[slug]\",\n        // The following aren't used in production.\n        bundlePath: \"\",\n        filename: \"\"\n    },\n    userland: _pages_api_products_slug_js__WEBPACK_IMPORTED_MODULE_3__\n});\n\n//# sourceMappingURL=pages-api.js.map//# sourceURL=[module]\n//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiKGFwaSkvLi9ub2RlX21vZHVsZXMvbmV4dC9kaXN0L2J1aWxkL3dlYnBhY2svbG9hZGVycy9uZXh0LXJvdXRlLWxvYWRlci9pbmRleC5qcz9raW5kPVBBR0VTX0FQSSZwYWdlPSUyRmFwaSUyRnByb2R1Y3RzJTJGJTVCc2x1ZyU1RCZwcmVmZXJyZWRSZWdpb249JmFic29sdXRlUGFnZVBhdGg9LiUyRnBhZ2VzJTVDYXBpJTVDcHJvZHVjdHMlNUMlNUJzbHVnJTVELmpzJm1pZGRsZXdhcmVDb25maWdCYXNlNjQ9ZTMwJTNEISIsIm1hcHBpbmdzIjoiOzs7Ozs7Ozs7OztBQUFzRztBQUN2QztBQUNMO0FBQzFEO0FBQzhEO0FBQzlEO0FBQ0EsaUVBQWUsd0VBQUssQ0FBQyx3REFBUSxZQUFZLEVBQUM7QUFDMUM7QUFDTyxlQUFlLHdFQUFLLENBQUMsd0RBQVE7QUFDcEM7QUFDTyx3QkFBd0IsZ0hBQW1CO0FBQ2xEO0FBQ0EsY0FBYyx5RUFBUztBQUN2QjtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0EsS0FBSztBQUNMLFlBQVk7QUFDWixDQUFDOztBQUVEIiwic291cmNlcyI6WyJ3ZWJwYWNrOi8vc3RhcnMtaG9tYnJlcy8/M2U4OSJdLCJzb3VyY2VzQ29udGVudCI6WyJpbXBvcnQgeyBQYWdlc0FQSVJvdXRlTW9kdWxlIH0gZnJvbSBcIm5leHQvZGlzdC9zZXJ2ZXIvZnV0dXJlL3JvdXRlLW1vZHVsZXMvcGFnZXMtYXBpL21vZHVsZS5jb21waWxlZFwiO1xuaW1wb3J0IHsgUm91dGVLaW5kIH0gZnJvbSBcIm5leHQvZGlzdC9zZXJ2ZXIvZnV0dXJlL3JvdXRlLWtpbmRcIjtcbmltcG9ydCB7IGhvaXN0IH0gZnJvbSBcIm5leHQvZGlzdC9idWlsZC90ZW1wbGF0ZXMvaGVscGVyc1wiO1xuLy8gSW1wb3J0IHRoZSB1c2VybGFuZCBjb2RlLlxuaW1wb3J0ICogYXMgdXNlcmxhbmQgZnJvbSBcIi4vcGFnZXNcXFxcYXBpXFxcXHByb2R1Y3RzXFxcXFtzbHVnXS5qc1wiO1xuLy8gUmUtZXhwb3J0IHRoZSBoYW5kbGVyIChzaG91bGQgYmUgdGhlIGRlZmF1bHQgZXhwb3J0KS5cbmV4cG9ydCBkZWZhdWx0IGhvaXN0KHVzZXJsYW5kLCBcImRlZmF1bHRcIik7XG4vLyBSZS1leHBvcnQgY29uZmlnLlxuZXhwb3J0IGNvbnN0IGNvbmZpZyA9IGhvaXN0KHVzZXJsYW5kLCBcImNvbmZpZ1wiKTtcbi8vIENyZWF0ZSBhbmQgZXhwb3J0IHRoZSByb3V0ZSBtb2R1bGUgdGhhdCB3aWxsIGJlIGNvbnN1bWVkLlxuZXhwb3J0IGNvbnN0IHJvdXRlTW9kdWxlID0gbmV3IFBhZ2VzQVBJUm91dGVNb2R1bGUoe1xuICAgIGRlZmluaXRpb246IHtcbiAgICAgICAga2luZDogUm91dGVLaW5kLlBBR0VTX0FQSSxcbiAgICAgICAgcGFnZTogXCIvYXBpL3Byb2R1Y3RzL1tzbHVnXVwiLFxuICAgICAgICBwYXRobmFtZTogXCIvYXBpL3Byb2R1Y3RzL1tzbHVnXVwiLFxuICAgICAgICAvLyBUaGUgZm9sbG93aW5nIGFyZW4ndCB1c2VkIGluIHByb2R1Y3Rpb24uXG4gICAgICAgIGJ1bmRsZVBhdGg6IFwiXCIsXG4gICAgICAgIGZpbGVuYW1lOiBcIlwiXG4gICAgfSxcbiAgICB1c2VybGFuZFxufSk7XG5cbi8vIyBzb3VyY2VNYXBwaW5nVVJMPXBhZ2VzLWFwaS5qcy5tYXAiXSwibmFtZXMiOltdLCJzb3VyY2VSb290IjoiIn0=\n//# sourceURL=webpack-internal:///(api)/./node_modules/next/dist/build/webpack/loaders/next-route-loader/index.js?kind=PAGES_API&page=%2Fapi%2Fproducts%2F%5Bslug%5D&preferredRegion=&absolutePagePath=.%2Fpages%5Capi%5Cproducts%5C%5Bslug%5D.js&middlewareConfigBase64=e30%3D!\n");
+
+/***/ }),
+
+/***/ "(api)/./lib/db.js":
+/*!*******************!*\
+  !*** ./lib/db.js ***!
+  \*******************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+eval("// lib/db.js\n// PostgreSQL connection pool\n\nconst { Pool } = __webpack_require__(/*! pg */ \"pg\");\nconst pool = new Pool({\n    connectionString: process.env.DATABASE_URL,\n    ssl:  false ? 0 : false\n});\nmodule.exports = {\n    query: (text, params)=>pool.query(text, params),\n    pool\n};\n//# sourceURL=[module]\n//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiKGFwaSkvLi9saWIvZGIuanMiLCJtYXBwaW5ncyI6IkFBQUEsWUFBWTtBQUNaLDZCQUE2Qjs7QUFFN0IsTUFBTSxFQUFFQSxJQUFJLEVBQUUsR0FBR0MsbUJBQU9BLENBQUM7QUFFekIsTUFBTUMsT0FBTyxJQUFJRixLQUFLO0lBQ3BCRyxrQkFBa0JDLFFBQVFDLEdBQUcsQ0FBQ0MsWUFBWTtJQUMxQ0MsS0FBS0gsTUFBeUIsR0FBZSxDQUE2QixHQUFHO0FBQy9FO0FBRUFLLE9BQU9DLE9BQU8sR0FBRztJQUNmQyxPQUFPLENBQUNDLE1BQU1DLFNBQVdYLEtBQUtTLEtBQUssQ0FBQ0MsTUFBTUM7SUFDMUNYO0FBQ0YiLCJzb3VyY2VzIjpbIndlYnBhY2s6Ly9zdGFycy1ob21icmVzLy4vbGliL2RiLmpzPzNkYzkiXSwic291cmNlc0NvbnRlbnQiOlsiLy8gbGliL2RiLmpzXG4vLyBQb3N0Z3JlU1FMIGNvbm5lY3Rpb24gcG9vbFxuXG5jb25zdCB7IFBvb2wgfSA9IHJlcXVpcmUoJ3BnJylcblxuY29uc3QgcG9vbCA9IG5ldyBQb29sKHtcbiAgY29ubmVjdGlvblN0cmluZzogcHJvY2Vzcy5lbnYuREFUQUJBU0VfVVJMLFxuICBzc2w6IHByb2Nlc3MuZW52Lk5PREVfRU5WID09PSAncHJvZHVjdGlvbicgPyB7IHJlamVjdFVuYXV0aG9yaXplZDogZmFsc2UgfSA6IGZhbHNlLFxufSlcblxubW9kdWxlLmV4cG9ydHMgPSB7XG4gIHF1ZXJ5OiAodGV4dCwgcGFyYW1zKSA9PiBwb29sLnF1ZXJ5KHRleHQsIHBhcmFtcyksXG4gIHBvb2wsXG59XG4iXSwibmFtZXMiOlsiUG9vbCIsInJlcXVpcmUiLCJwb29sIiwiY29ubmVjdGlvblN0cmluZyIsInByb2Nlc3MiLCJlbnYiLCJEQVRBQkFTRV9VUkwiLCJzc2wiLCJyZWplY3RVbmF1dGhvcml6ZWQiLCJtb2R1bGUiLCJleHBvcnRzIiwicXVlcnkiLCJ0ZXh0IiwicGFyYW1zIl0sInNvdXJjZVJvb3QiOiIifQ==\n//# sourceURL=webpack-internal:///(api)/./lib/db.js\n");
+
+/***/ }),
+
+/***/ "(api)/./pages/api/products/[slug].js":
+/*!**************************************!*\
+  !*** ./pages/api/products/[slug].js ***!
+  \**************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (/* binding */ handler)\n/* harmony export */ });\n/* harmony import */ var _lib_db__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../lib/db */ \"(api)/./lib/db.js\");\n/* harmony import */ var _lib_db__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_lib_db__WEBPACK_IMPORTED_MODULE_0__);\n// pages/api/products/[slug].js\n\nasync function handler(req, res) {\n    const { slug } = req.query;\n    if (req.method === \"GET\") {\n        try {\n            const productResult = await _lib_db__WEBPACK_IMPORTED_MODULE_0___default().query(`SELECT \n          p.*,\n          COALESCE(json_agg(\n            json_build_object(\n              'id', pv.id,\n              'sku', pv.sku,\n              'size', pv.size,\n              'color', pv.color,\n              'color_hex', pv.color_hex,\n              'stock', pv.stock,\n              'price_override', pv.price_override\n            ) ORDER BY pv.size, pv.color\n          ) FILTER (WHERE pv.id IS NOT NULL), '[]') as variants,\n          COALESCE(\n            json_agg(\n              json_build_object(\n                'id', r.id,\n                'customer_name', r.customer_name,\n                'rating', r.rating,\n                'comment', r.comment,\n                'created_at', r.created_at\n              ) ORDER BY r.created_at DESC\n            ) FILTER (WHERE r.id IS NOT NULL AND r.approved = true),\n            '[]'\n          ) as reviews\n        FROM products p\n        LEFT JOIN product_variants pv ON pv.product_id = p.id\n        LEFT JOIN reviews r ON r.product_id = p.id\n        WHERE p.slug = $1 AND p.active = true\n        GROUP BY p.id`, [\n                slug\n            ]);\n            if (!productResult.rows[0]) {\n                return res.status(404).json({\n                    error: \"Producto no encontrado\"\n                });\n            }\n            // Related products\n            const product = productResult.rows[0];\n            const relatedResult = await _lib_db__WEBPACK_IMPORTED_MODULE_0___default().query(`SELECT p.id, p.slug, p.name, p.base_price, p.images, p.category\n         FROM products p\n         WHERE p.category = $1 AND p.slug != $2 AND p.active = true\n         LIMIT 4`, [\n                product.category,\n                slug\n            ]);\n            res.status(200).json({\n                product,\n                related: relatedResult.rows\n            });\n        } catch (err) {\n            console.error(err);\n            res.status(500).json({\n                error: \"Error al obtener producto\"\n            });\n        }\n    } else {\n        res.status(405).end();\n    }\n}\n//# sourceURL=[module]\n//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiKGFwaSkvLi9wYWdlcy9hcGkvcHJvZHVjdHMvW3NsdWddLmpzIiwibWFwcGluZ3MiOiI7Ozs7OztBQUFBLCtCQUErQjtBQUNDO0FBRWpCLGVBQWVDLFFBQVFDLEdBQUcsRUFBRUMsR0FBRztJQUM1QyxNQUFNLEVBQUVDLElBQUksRUFBRSxHQUFHRixJQUFJRyxLQUFLO0lBRTFCLElBQUlILElBQUlJLE1BQU0sS0FBSyxPQUFPO1FBQ3hCLElBQUk7WUFDRixNQUFNQyxnQkFBZ0IsTUFBTVAsb0RBQVEsQ0FDbEMsQ0FBQzs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7cUJBNkJZLENBQUMsRUFDZDtnQkFBQ0k7YUFBSztZQUdSLElBQUksQ0FBQ0csY0FBY0MsSUFBSSxDQUFDLEVBQUUsRUFBRTtnQkFDMUIsT0FBT0wsSUFBSU0sTUFBTSxDQUFDLEtBQUtDLElBQUksQ0FBQztvQkFBRUMsT0FBTztnQkFBeUI7WUFDaEU7WUFFQSxtQkFBbUI7WUFDbkIsTUFBTUMsVUFBVUwsY0FBY0MsSUFBSSxDQUFDLEVBQUU7WUFDckMsTUFBTUssZ0JBQWdCLE1BQU1iLG9EQUFRLENBQ2xDLENBQUM7OztnQkFHTyxDQUFDLEVBQ1Q7Z0JBQUNZLFFBQVFFLFFBQVE7Z0JBQUVWO2FBQUs7WUFHMUJELElBQUlNLE1BQU0sQ0FBQyxLQUFLQyxJQUFJLENBQUM7Z0JBQ25CRTtnQkFDQUcsU0FBU0YsY0FBY0wsSUFBSTtZQUM3QjtRQUNGLEVBQUUsT0FBT1EsS0FBSztZQUNaQyxRQUFRTixLQUFLLENBQUNLO1lBQ2RiLElBQUlNLE1BQU0sQ0FBQyxLQUFLQyxJQUFJLENBQUM7Z0JBQUVDLE9BQU87WUFBNEI7UUFDNUQ7SUFDRixPQUFPO1FBQ0xSLElBQUlNLE1BQU0sQ0FBQyxLQUFLUyxHQUFHO0lBQ3JCO0FBQ0YiLCJzb3VyY2VzIjpbIndlYnBhY2s6Ly9zdGFycy1ob21icmVzLy4vcGFnZXMvYXBpL3Byb2R1Y3RzL1tzbHVnXS5qcz82ZDBkIl0sInNvdXJjZXNDb250ZW50IjpbIi8vIHBhZ2VzL2FwaS9wcm9kdWN0cy9bc2x1Z10uanNcbmltcG9ydCBkYiBmcm9tICcuLi8uLi8uLi9saWIvZGInXG5cbmV4cG9ydCBkZWZhdWx0IGFzeW5jIGZ1bmN0aW9uIGhhbmRsZXIocmVxLCByZXMpIHtcbiAgY29uc3QgeyBzbHVnIH0gPSByZXEucXVlcnlcblxuICBpZiAocmVxLm1ldGhvZCA9PT0gJ0dFVCcpIHtcbiAgICB0cnkge1xuICAgICAgY29uc3QgcHJvZHVjdFJlc3VsdCA9IGF3YWl0IGRiLnF1ZXJ5KFxuICAgICAgICBgU0VMRUNUIFxuICAgICAgICAgIHAuKixcbiAgICAgICAgICBDT0FMRVNDRShqc29uX2FnZyhcbiAgICAgICAgICAgIGpzb25fYnVpbGRfb2JqZWN0KFxuICAgICAgICAgICAgICAnaWQnLCBwdi5pZCxcbiAgICAgICAgICAgICAgJ3NrdScsIHB2LnNrdSxcbiAgICAgICAgICAgICAgJ3NpemUnLCBwdi5zaXplLFxuICAgICAgICAgICAgICAnY29sb3InLCBwdi5jb2xvcixcbiAgICAgICAgICAgICAgJ2NvbG9yX2hleCcsIHB2LmNvbG9yX2hleCxcbiAgICAgICAgICAgICAgJ3N0b2NrJywgcHYuc3RvY2ssXG4gICAgICAgICAgICAgICdwcmljZV9vdmVycmlkZScsIHB2LnByaWNlX292ZXJyaWRlXG4gICAgICAgICAgICApIE9SREVSIEJZIHB2LnNpemUsIHB2LmNvbG9yXG4gICAgICAgICAgKSBGSUxURVIgKFdIRVJFIHB2LmlkIElTIE5PVCBOVUxMKSwgJ1tdJykgYXMgdmFyaWFudHMsXG4gICAgICAgICAgQ09BTEVTQ0UoXG4gICAgICAgICAgICBqc29uX2FnZyhcbiAgICAgICAgICAgICAganNvbl9idWlsZF9vYmplY3QoXG4gICAgICAgICAgICAgICAgJ2lkJywgci5pZCxcbiAgICAgICAgICAgICAgICAnY3VzdG9tZXJfbmFtZScsIHIuY3VzdG9tZXJfbmFtZSxcbiAgICAgICAgICAgICAgICAncmF0aW5nJywgci5yYXRpbmcsXG4gICAgICAgICAgICAgICAgJ2NvbW1lbnQnLCByLmNvbW1lbnQsXG4gICAgICAgICAgICAgICAgJ2NyZWF0ZWRfYXQnLCByLmNyZWF0ZWRfYXRcbiAgICAgICAgICAgICAgKSBPUkRFUiBCWSByLmNyZWF0ZWRfYXQgREVTQ1xuICAgICAgICAgICAgKSBGSUxURVIgKFdIRVJFIHIuaWQgSVMgTk9UIE5VTEwgQU5EIHIuYXBwcm92ZWQgPSB0cnVlKSxcbiAgICAgICAgICAgICdbXSdcbiAgICAgICAgICApIGFzIHJldmlld3NcbiAgICAgICAgRlJPTSBwcm9kdWN0cyBwXG4gICAgICAgIExFRlQgSk9JTiBwcm9kdWN0X3ZhcmlhbnRzIHB2IE9OIHB2LnByb2R1Y3RfaWQgPSBwLmlkXG4gICAgICAgIExFRlQgSk9JTiByZXZpZXdzIHIgT04gci5wcm9kdWN0X2lkID0gcC5pZFxuICAgICAgICBXSEVSRSBwLnNsdWcgPSAkMSBBTkQgcC5hY3RpdmUgPSB0cnVlXG4gICAgICAgIEdST1VQIEJZIHAuaWRgLFxuICAgICAgICBbc2x1Z11cbiAgICAgIClcblxuICAgICAgaWYgKCFwcm9kdWN0UmVzdWx0LnJvd3NbMF0pIHtcbiAgICAgICAgcmV0dXJuIHJlcy5zdGF0dXMoNDA0KS5qc29uKHsgZXJyb3I6ICdQcm9kdWN0byBubyBlbmNvbnRyYWRvJyB9KVxuICAgICAgfVxuXG4gICAgICAvLyBSZWxhdGVkIHByb2R1Y3RzXG4gICAgICBjb25zdCBwcm9kdWN0ID0gcHJvZHVjdFJlc3VsdC5yb3dzWzBdXG4gICAgICBjb25zdCByZWxhdGVkUmVzdWx0ID0gYXdhaXQgZGIucXVlcnkoXG4gICAgICAgIGBTRUxFQ1QgcC5pZCwgcC5zbHVnLCBwLm5hbWUsIHAuYmFzZV9wcmljZSwgcC5pbWFnZXMsIHAuY2F0ZWdvcnlcbiAgICAgICAgIEZST00gcHJvZHVjdHMgcFxuICAgICAgICAgV0hFUkUgcC5jYXRlZ29yeSA9ICQxIEFORCBwLnNsdWcgIT0gJDIgQU5EIHAuYWN0aXZlID0gdHJ1ZVxuICAgICAgICAgTElNSVQgNGAsXG4gICAgICAgIFtwcm9kdWN0LmNhdGVnb3J5LCBzbHVnXVxuICAgICAgKVxuXG4gICAgICByZXMuc3RhdHVzKDIwMCkuanNvbih7XG4gICAgICAgIHByb2R1Y3QsXG4gICAgICAgIHJlbGF0ZWQ6IHJlbGF0ZWRSZXN1bHQucm93cyxcbiAgICAgIH0pXG4gICAgfSBjYXRjaCAoZXJyKSB7XG4gICAgICBjb25zb2xlLmVycm9yKGVycilcbiAgICAgIHJlcy5zdGF0dXMoNTAwKS5qc29uKHsgZXJyb3I6ICdFcnJvciBhbCBvYnRlbmVyIHByb2R1Y3RvJyB9KVxuICAgIH1cbiAgfSBlbHNlIHtcbiAgICByZXMuc3RhdHVzKDQwNSkuZW5kKClcbiAgfVxufVxuIl0sIm5hbWVzIjpbImRiIiwiaGFuZGxlciIsInJlcSIsInJlcyIsInNsdWciLCJxdWVyeSIsIm1ldGhvZCIsInByb2R1Y3RSZXN1bHQiLCJyb3dzIiwic3RhdHVzIiwianNvbiIsImVycm9yIiwicHJvZHVjdCIsInJlbGF0ZWRSZXN1bHQiLCJjYXRlZ29yeSIsInJlbGF0ZWQiLCJlcnIiLCJjb25zb2xlIiwiZW5kIl0sInNvdXJjZVJvb3QiOiIifQ==\n//# sourceURL=webpack-internal:///(api)/./pages/api/products/[slug].js\n");
+
+/***/ })
+
+};
+;
+
+// load runtime
+var __webpack_require__ = require("../../../webpack-api-runtime.js");
+__webpack_require__.C(exports);
+var __webpack_exec__ = (moduleId) => (__webpack_require__(__webpack_require__.s = moduleId))
+var __webpack_exports__ = __webpack_require__.X(0, ["vendor-chunks/next"], () => (__webpack_exec__("(api)/./node_modules/next/dist/build/webpack/loaders/next-route-loader/index.js?kind=PAGES_API&page=%2Fapi%2Fproducts%2F%5Bslug%5D&preferredRegion=&absolutePagePath=.%2Fpages%5Capi%5Cproducts%5C%5Bslug%5D.js&middlewareConfigBase64=e30%3D!")));
+module.exports = __webpack_exports__;
+
+})();
