@@ -41,7 +41,7 @@ export default function Layout({ children, title, description, canonical }) {
 
       {/* Announcement Bar */}
       <div className="bg-brand-gold text-brand-black text-center py-2 px-4 text-xs tracking-luxury font-body font-500">
-        ENVÍO GRATIS EN COMPRAS SUPERIORES A $150.000 · 12 CUOTAS SIN INTERÉS CON TARJETA NARANJA
+        ENVÍO GRATIS EN COMPRAS SUPERIORES A $180.000 · 12 CUOTAS SIN INTERÉS CON TARJETA NARANJA
       </div>
 
       {/* Header */}

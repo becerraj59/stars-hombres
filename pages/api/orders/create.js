@@ -40,7 +40,8 @@ export default async function handler(req, res) {
     }
 
     const subtotal = items.reduce((sum, item) => sum + item.price * item.quantity, 0)
-    const shipping = subtotal >= 150000 ? 0 : 5500 // Envío gratis +$150k
+    const shipping = subtotal >= 180.000
+     ? 0 : 5500 // Envío gratis +$180.000k
     const total = subtotal + shipping
     const orderNumber = generateOrderNumber()
 
