@@ -18,12 +18,10 @@ export default function Layout({ children, title, description, canonical }) {
   }, [])
 
   const categories = [
-    { href: '/catalogo?categoria=trajes', label: 'Trajes' },
-    { href: '/catalogo?categoria=camisas', label: 'Camisas' },
-    { href: '/catalogo?categoria=sweaters', label: 'Sweaters' },
-    { href: '/catalogo?categoria=zapatos', label: 'Calzado' },
-  ]
-
+   { href: '/catalogo?temporada=verano', label: 'Verano' },
+      { href: '/catalogo?temporada=otono-invierno', label: 'Otoño-Invierno 2026' },
+      { href: '/oportunidades', label: 'Oportunidades' },
+      { href: '/catalogo', label: 'Todo' },
   return (
     <>
       <Head>
