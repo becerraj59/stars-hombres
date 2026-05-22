@@ -8,8 +8,9 @@ import { formatPrice, getWhatsAppLink, CATEGORY_LABELS } from '../lib/utils'
 export default function Home({ featuredProducts, testimonials }) {
   const [activeCategory, setActiveCategory] = useState(null)
 
+  
   const categories = [
-    { key: 'trajes', label: 'Trajes & Ambos', icon: '🎩', desc: 'Para eventos que exigen presencia' },
+    { key: 'verano', label: 'Verano', icon: '☀️', desc: 'Camisas, remeras, chombas y más' },
     { key: 'camisas', label: 'Camisas', icon: '👔', desc: 'Elegancia en cada detalle' },
     { key: 'sweaters', label: 'Sweaters', icon: '🧥', desc: 'Calidez con estilo' },
     { key: 'zapatos', label: 'Calzado', icon: '👞', desc: 'El toque final del look' },
