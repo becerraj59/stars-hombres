@@ -13,7 +13,7 @@ export default function Home({ featuredProducts, testimonials }) {
     { key: 'verano', label: 'Verano', icon: '☀️', desc: 'Camisas, remeras, chombas y más' },
     { key: 'camisas', label: 'Camisas', icon: '👔', desc: 'Elegancia en cada detalle' },
     { key: 'sweaters', label: 'Sweaters', icon: '🧥', desc: 'Calidez con estilo' },
-    { key: 'zapatos', label: 'Calzado', icon: '👞', desc: 'El toque final del look' },
+    
   ]
 
   return (
@@ -270,7 +270,7 @@ export default function Home({ featuredProducts, testimonials }) {
                 📍 <span>Córdoba, Argentina</span>
               </p>
               <p className="font-body text-sm text-brand-pearl flex items-center gap-2">
-                🕐 <span>Lun a Sáb: 10:00 a 20:00</span>
+                🕐 <span>Lun–Vie: 9:30 a 19:00 · Sáb: 9:30 a 14:00</span>
               </p>
               <p className="font-body text-sm text-brand-pearl flex items-center gap-2">
                 📞 <span>Consultas por WhatsApp</span>
