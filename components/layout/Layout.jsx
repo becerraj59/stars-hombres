@@ -182,7 +182,7 @@ export default function Layout({ children, title, description, canonical }) {
                     💬 WhatsApp
                   </a>
                 </li>
-                <li className="font-body text-sm text-brand-silver">Lun–Sáb: 10:00 a 20:00</li>
+                <li className="font-body text-sm text-brand-silver">Lun–Vie: 9:30 a 19:00 · Sáb: 9:30 a 14:00</li>
                 <li className="font-body text-sm text-brand-silver">✈️ Envíos a todo el país</li>
                 <li className="font-body text-sm text-brand-silver">💳 12 cuotas sin interés</li>
               </ul>
