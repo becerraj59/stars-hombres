@@ -156,7 +156,7 @@ export default function Layout({ children, title, description, canonical }) {
                 Elegancia masculina. Vestí con presencia. Indumentaria de alta calidad para el hombre moderno.
               </p>
               <p className="font-body text-sm text-brand-silver mt-4">
-                📍 Córdoba, Argentina
+                📍 Rivera Indarte 139, Local 20 - Galería Cervantes, Córdoba
               </p>
             </div>
 
