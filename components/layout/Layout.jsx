@@ -21,7 +21,8 @@ export default function Layout({ children, title, description, canonical }) {
    { href: '/catalogo?temporada=verano', label: 'Verano' },
       { href: '/catalogo?temporada=otono-invierno', label: 'Otoño-Invierno 2026' },
       { href: '/oportunidades', label: 'Oportunidades' },
-      { href: '/catalogo', label: 'Todo' },
+      { href: '/catalogo', label: 'Todo' }
+  ]
   return (
     <>
       <Head>
